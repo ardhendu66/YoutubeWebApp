@@ -1,23 +1,29 @@
+import { useRouter } from "next/router"
+import type { Video } from "@/videos"
+import { Line } from "./Line"
 
+export default ({video}: {video: Video}) => {
+    const router = useRouter()
 
-export default () => {
     return (
-        <div>
-            <img src="/YT.jpg" />
-            <div className="grid grid-cols-12 pt-4">
-                <div className="col-span-1 w-20 h-20 flex justify-center items-center">
-                    <img src="/YTlogo.jpg" className="w-full h-full rounded-full" />
+        <div className="cursor-pointer" onClick={() => router.push('/video/1')}>
+            <div className="rounded-xl overflow-hidden mb-5">
+                <img src={video.thumbnail} />
+                <Line progress={10} />
+            </div>
+            <div className="flex justify-between text-white-800 text-xl font-medium">
+                <img src={video.channelLogo} className="w-12 h-12 rounded-full mt-2 mr-3" />
+                {video.title}
+            </div>
+            <div className="text-gray-400 text-base font-normal pl-16">
+                {video.author}
+            </div>
+            <div className="flex">
+                <div className="text-gray-400 text-base font-normal pl-16 pr-2">
+                    {video.views} 
                 </div>
-                <div className="col-span-11 pl-10">
-                    <div>
-                        Jawan: Chaleya (Hindi) | Shah Rukh Khan
-                    </div>
-                    <div className="col-span-11 text-gray-600 text-base">
-                        Harkirat Singh
-                    </div>
-                    <div className="col-span-11 text-gray-600 text-base">
-                        46M | 13 days ago
-                    </div>
+                <div className="text-gray-400 text-base font-normal">
+                • {video.timeStamps} ago
                 </div>
             </div>
         </div>
