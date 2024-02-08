@@ -2,7 +2,7 @@ import { useRouter } from "next/router"
 import type { Video } from "@/videos"
 import { Line } from "./Line"
 
-export default ({video}: {video: Video}) => {
+export default ({video}: any) => {
     const router = useRouter()
 
     return (
