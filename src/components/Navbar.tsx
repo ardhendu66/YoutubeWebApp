@@ -1,5 +1,6 @@
 import Searchbar from "./Searchbar"
 import { useRouter } from "next/router"
+import { Button } from '@mui/material'
 
 export default () => {
     const router = useRouter()
@@ -14,7 +15,7 @@ export default () => {
                 <Searchbar />
             </div>
             <div>
-                Sign In
+                <Button variant='outlined' onClick={() => router.push('/')}>Sign In</Button>
             </div>
         </div>
     )

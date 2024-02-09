@@ -1,59 +1,80 @@
 import Navbar from "@/components/Navbar"
-import { VIDEOS, Video } from "@/videos"
-import { useRouter } from "next/router"
-import { Line } from "@/components/Line"
+import { VIDEOS } from "@/videos"
+import VideoCardHorizontal from "@/components/VideoCardHorizontal"
 
 export default () => {
     return (
         <div className="p-4">
             <Navbar />
-            <div className="flex justify-around pt-6">
-                <div className="w-4/6">
-                    <video 
-                        width={'100%'} 
-                        height={'80px'} 
-                        controls 
-                        src='/Husn.mp4'
-                        className="border-solid border border-sky-300 rounded-md focus:outline-none"
-                    />
-                    <div className="text-2xl p-10 w-full h-48 mt-8 bg-gray-600">Anuv Jain - HUSN (Official Video)</div>
-                </div>
-                <div className="w-2/6 pr-4 pl-4 pb-4">
-                    {
-                        VIDEOS.map(video => (
-                            <div className="pr-3 pl-3 pb-10">
-                                <VideoCard key={video.id} video={video} />
-                            </div>
-                        ))
-                    }
-                </div>
+            <div className="max-md:hidden flex flex-wrap justify-around pt-6">
+                <VideoWithDescriptionUntilMediumBreakpoint />
+                <VideoWrapperUntilMediumBreakpoint />
+            </div>
+
+            <div className="md:hidden flex-wrap pt-6">
+                <VideoWithDescriptionAfterMediumBreakpoint />
+                <VideoWrapperAfterMediumBreakpoint />
             </div>
         </div>
     )
 }
 
-const VideoCard = ({video}: any) => {
-    const router = useRouter()
-
+const VideoWithDescriptionUntilMediumBreakpoint = () => {
     return (
-        <div className="cursor-pointer" onClick={() => router.push('/video/1')}>
-            <div className="flex justify-between">
-                <div className="border border-solid border-sky-800 rounded-md mr-2 overflow-hidden">
-                    <img src={video.thumbnail} style={{height: '96%'}} className="h-full rounded-md" />
-                    <Line progress={9} />
-                </div>
-                <div>
-                    <div className="text-gray-100 text-base font-serif">
-                        {video.title}
-                    </div>
-                    <div className="text-gray-400 text-sm font-normal">
-                        {video.author}
-                    </div>
-                    <div className="text-gray-400 text-sm font-normal">
-                        {video.views} • {video.timeStamps} ago
-                    </div>
-                </div>
+        <div className="w-3/5">
+            <video 
+                width={'98%'} 
+                height={'80px'} 
+                controls 
+                src='/Husn.mp4'
+                className="border-solid border border-sky-300 rounded-md focus:outline-none"
+            />
+            <div className="text-2xl p-10 h-48 mt-8 bg-gray-600" style={{width: '98%'}}>
+                Anuv Jain - HUSN (Official Video)
             </div>
+        </div>
+    )
+}
+const VideoWithDescriptionAfterMediumBreakpoint = () => {
+    return (
+        <div className="w-full">
+            <video 
+                width={'98%'} 
+                height={'80px'} 
+                controls 
+                src='/Husn.mp4'
+                className="border-solid border border-sky-300 rounded-md focus:outline-none"
+            />
+            <div className="text-2xl p-10 h-48 mt-8 bg-gray-600" style={{width: '98%'}}>
+                Anuv Jain - HUSN (Official Video)
+            </div>
+        </div>
+    )
+}
+
+const VideoWrapperUntilMediumBreakpoint = () => {
+    return (
+        <div className="w-2/5 pr-4 pl-4 pb-4">
+            {
+                VIDEOS.map(video => (
+                    <div className="pr-3 pl-3 pb-10" key={Number(video.id)}>
+                        <VideoCardHorizontal video={video} />
+                    </div>
+                ))
+            }
+        </div>
+    )
+}
+const VideoWrapperAfterMediumBreakpoint = () => {
+    return (
+        <div className="w-full">
+            {
+                VIDEOS.map(video => (
+                    <div className="m-3" key={Number(video.id)}>
+                        <VideoCardHorizontal video={video} />
+                    </div>
+                ))
+            }
         </div>
     )
 }
