@@ -57,7 +57,7 @@ const VideoWrapperUntilMediumBreakpoint = () => {
         <div className="w-2/5 pr-4 pl-4 pb-4">
             {
                 VIDEOS.map(video => (
-                    <div className="pr-3 pl-3 pb-10" key={Number(video.id)}>
+                    <div className="pr-3 pl-3 pb-10" key={Number(video!.id)}>
                         <VideoCardHorizontal video={video} />
                     </div>
                 ))
@@ -70,7 +70,7 @@ const VideoWrapperAfterMediumBreakpoint = () => {
         <div className="w-full">
             {
                 VIDEOS.map(video => (
-                    <div className="m-3" key={Number(video.id)}>
+                    <div className="m-3" key={Number(video!.id)}>
                         <VideoCardHorizontal video={video} />
                     </div>
                 ))

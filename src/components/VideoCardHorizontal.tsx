@@ -9,18 +9,18 @@ export default ({video}: {video: Video}) => {
         <div className="cursor-pointer" onClick={() => router.push('/video/1')}>
             <div className="flex justify-between">
                 <div className="border border-solid border-sky-800 rounded-md mr-2 overflow-hidden">
-                    <img src={String(video.thumbnail)} style={{height: '96%'}} className="h-full rounded-md" />
+                    <img src={String(video!.thumbnail)} style={{height: '96%'}} className="h-full rounded-md" />
                     <Line progress={9} />
                 </div>
                 <div>
                     <div className="text-gray-100 text-base font-serif">
-                        {video.title}
+                        {video!.title}
                     </div>
                     <div className="text-gray-400 text-sm font-normal">
-                        {video.author}
+                        {video!.author}
                     </div>
                     <div className="text-gray-400 text-sm font-normal">
-                        {video.views} • {video.timeStamps} ago
+                        {video!.views} • {video!.timeStamps} ago
                     </div>
                 </div>
             </div>
